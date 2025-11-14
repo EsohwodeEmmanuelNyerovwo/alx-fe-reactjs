@@ -6,7 +6,7 @@ import { useRecipeStore } from './recipeStore'
 
 export default function RecipeDetails() {
     const { id } = useParams()
-    const recipe = useRecipeStore((s) => s.recipes.find((r) => r.id === id))
+    const recipe = useRecipeStore((s) => s.recipes.find((recipe) => recipe.id === id))
     const navigate = useNavigate()
 
 
