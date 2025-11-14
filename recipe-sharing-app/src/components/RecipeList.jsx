@@ -1,19 +1,46 @@
 import useRecipeStore from "./recipeStore";
 
-const RecipeList = () => {
-    const recipes = useRecipeStore(state => state.recipes);
+function RecipesList() {
+    const recipes = useRecipeStore((s) =>
+        s.searchTerm ? s.filteredRecipes : s.recipes
+    );
 
     return (
-        <div>
-            {
-                recipes.map(recipe => (
-                    <div key={recipe.id}>
-                        <h3>{recipe.title}</h3>
-                        <p>{recipe.description}</p>
-                    </div>
-                ))
-            }
+        <div className="p-6">
+            <h1 className="text-2xl font-bold">Recipes</h1>
+
+            {/* Search Bar */}
+            <SearchBar />
+
+            <ul className="mt-4 space-y-3">
+                {recipes.map((r) => (
+                    <li key={r.id} className="p-3 border rounded">
+                        <Link to={`/recipes/${r.id}`} className="font-semibold">
+                            {r.title}
+                        </Link>
+                        <p className="text-sm">{r.description}</p>
+                    </li>
+                ))}
+            </ul>
         </div>
     );
-};
-export default RecipeList;
+}
+// import useRecipeStore from "./recipeStore";
+
+// const RecipeList = () => {
+//     const recipes = useRecipeStore(state => state.recipes);
+
+//     return (
+//         <div>
+//             {
+//                 recipes.map(recipe => (
+//                     <div key={recipe.id}>
+//                         <h3>{recipe.title}</h3>
+//                         <p>{recipe.description}</p>
+//                     </div>
+//                 ))
+//             }
+//         </div>
+//     );
+// };
+// export default RecipeList;
