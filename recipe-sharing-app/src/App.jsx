@@ -16,6 +16,8 @@ function RecipesList() {
         {recipes.map((r) => (
           <li key={r.id}>
             <Link to={`/recipes/${r.id}`}>{r.title}</Link>
+            <Link to="/favorites" className="text-sm">Favorites</Link>
+            <Link to="/recommendations" className="text-sm ml-4">Recommended</Link>
             <p>{r.description}</p>
           </li>
         ))}
