@@ -21,14 +21,14 @@ export default function EditRecipeForm() {
     if (!recipe) return <div className="p-6">Recipe not found</div>
 
 
-    function handleChange(e) {
-        const { name, value } = e.target
+    function handleChange(event) {
+        const { name, value } = event.target
         setForm((f) => ({ ...f, [name]: value }))
     }
 
 
-    function handleSubmit(e) {
-        e.preventDefault()
+    function handleSubmit(event) {
+        event.preventDefault()
         const updates = {
             title: form.title,
             description: form.description,
