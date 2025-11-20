@@ -3,6 +3,7 @@
 // import viteLogo from '/vite.svg'
 // import './App.css'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Search from "./components/Search";
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
 
           <Routes>
             <Route path="/" element={<h2>Welcome!.</h2>} />
+            <Route path="/" element={<Search />} />
           </Routes>
         </div>
       </Router>
