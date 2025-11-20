@@ -4,59 +4,85 @@ import { fetchUserData } from '../services/githubService';
 
 const Search = () => {
     const [username, setUsername] = useState("");
-    const [userData, setUserData] = useState(null);
+    const [location, setLocation] = useState("");
+    const [minRepos, setMinRepos] = useState("");
+    const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
 
     const handleSearch = async (e) => {
-        e.preventDefault(); // prevent form refresh
+        e.preventDefault();
         setLoading(true);
         setError("");
-        setUserData(null);
+        setUsers([]);
 
         try {
-            const data = await fetchUserData(username);
-            setUserData(data);
+            const data = await fetchUserData({ username, location, minRepos });
+            setUsers(data);
         } catch (err) {
-            setError("Looks like we cant find the user");
+            setError("Looks like we can't find users matching these criteria");
         } finally {
             setLoading(false);
         }
     };
+
     return (
         <div>
             <form onSubmit={handleSearch}>
                 <input
                     type="text"
-                    placeholder="Enter GitHub username"
+                    placeholder="Username"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                 />
-                <button type="submit">Search</button>
+                <input
+                    type="text"
+                    placeholder="Location"
+                    value={location}
+                    onChange={(e) => setLocation(e.target.value)}
+                />
+                <input
+                    type="number"
+                    placeholder="Minimum Repositories"
+                    value={minRepos}
+                    onChange={(e) => setMinRepos(e.target.value)}
+                />
+                <button
+                    type="submit"
+                >
+                    Search
+                </button>
             </form>
 
-            <div style={{ marginTop: "20px" }}>
+            <div>
                 {loading && <p>Loading...</p>}
-                {error && <p style={{ color: "red" }}>{error}</p>}
-                {userData && (
-                    <div style={{ border: "1px solid #ccc", padding: "10px", marginTop: "10px" }}>
-                        <img
-                            src={userData.avatar_url}
-                            alt={userData.login}
-                            width={100}
-                            style={{ borderRadius: "50%" }}
-                        />
-                        <h3>{userData.name || userData.login}</h3>
-                        <p>
-                            <a href={userData.html_url} target="_blank">
-                                View GitHub Profile
-                            </a>
-                        </p>
-                    </div>
-                )}
+                {error && <p>{error}</p>}
+                {users.length > 0 &&
+                    users.map((user) => (
+                        <div
+                            key={user.id}
+                        >
+                            <img
+                                src={user.avatar_url}
+                                alt={user.login}
+                            />
+                            <div>
+                                <h3>{user.login}</h3>
+                                <p>Location: {user.location || "N/A"}</p>
+                                <p>Repos: {user.public_repos}</p>
+                                <a
+                                    href={user.html_url}
+                                    target="_blank"
+                                >
+                                    View Profile
+                                </a>
+                            </div>
+                        </div>
+                    ))}
             </div>
         </div>
     );
-}
+};
+
 
 export default Search
