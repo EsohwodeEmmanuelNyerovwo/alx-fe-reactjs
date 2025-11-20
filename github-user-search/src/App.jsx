@@ -14,7 +14,6 @@ function App() {
           <h1>GitHub User Search App</h1>
 
           <Routes>
-            {/* <Route path="/" element={<h2>Welcome!.</h2>} /> */}
             <Route path="/" element={<Search />} />
           </Routes>
         </div>
