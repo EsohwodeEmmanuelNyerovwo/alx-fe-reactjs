@@ -27,52 +27,59 @@ const Search = () => {
     };
 
     return (
-        <div>
-            <form onSubmit={handleSearch}>
+        <div className="max-w-2xl mx-auto p-4">
+            <form onSubmit={handleSearch} className="flex flex-col gap-4 mb-6">
                 <input
                     type="text"
                     placeholder="Username"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
+                    className="border p-2 rounded"
                 />
                 <input
                     type="text"
                     placeholder="Location"
                     value={location}
                     onChange={(e) => setLocation(e.target.value)}
+                    className="border p-2 rounded"
                 />
                 <input
                     type="number"
                     placeholder="Minimum Repositories"
                     value={minRepos}
                     onChange={(e) => setMinRepos(e.target.value)}
+                    className="border p-2 rounded"
                 />
                 <button
                     type="submit"
+                    className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
                 >
                     Search
                 </button>
             </form>
 
-            <div>
+            <div className="flex flex-col gap-4">
                 {loading && <p>Loading...</p>}
-                {error && <p>{error}</p>}
+                {error && <p className="text-red-500">{error}</p>}
                 {users.length > 0 &&
                     users.map((user) => (
                         <div
                             key={user.id}
+                            className="border p-4 rounded flex items-center gap-4"
                         >
                             <img
                                 src={user.avatar_url}
                                 alt={user.login}
+                                className="w-16 h-16 rounded-full"
                             />
                             <div>
-                                <h3>{user.login}</h3>
+                                <h3 className="font-bold">{user.login}</h3>
                                 <p>Location: {user.location || "N/A"}</p>
                                 <p>Repos: {user.public_repos}</p>
                                 <a
                                     href={user.html_url}
                                     target="_blank"
+                                    className="text-blue-600 hover:underline"
                                 >
                                     View Profile
                                 </a>
