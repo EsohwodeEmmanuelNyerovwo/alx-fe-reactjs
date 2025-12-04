@@ -3,18 +3,81 @@
         "id": 1,
         "title": "Spaghetti Carbonara",
         "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
-        "image": "https://picsum.photos/300/200?random=1"
+        "image": "https://picsum.photos/300/200?random=1",
+        "ingredients": [
+            "200g spaghetti",
+            "100g pancetta",
+            "2 eggs",
+            "50g parmesan cheese",
+            "Black pepper"
+        ],
+        "instructions": [
+            "Boil spaghetti in salted water.",
+            "Fry pancetta until crispy.",
+            "Beat eggs with parmesan.",
+            "Combine spaghetti, pancetta, and egg mixture.",
+            "Serve with extra parmesan and pepper."
+        ]
     },
     {
         "id": 2,
         "title": "Chicken Tikka Masala",
         "summary": "Chunks of grilled chicken cooked in a buttery tomato gravy.",
-        "image": "https://picsum.photos/300/200?random=2"
+        "image": "https://picsum.photos/300/200?random=2",
+        "ingredients": [
+            "500g chicken",
+            "1 cup yogurt",
+            "2 tbsp tikka masala spice",
+            "1 onion",
+            "200ml tomato sauce"
+        ],
+        "instructions": [
+            "Marinate chicken in yogurt and spices for 2 hours.",
+            "Grill chicken until cooked.",
+            "Prepare sauce with onion and tomato.",
+            "Combine chicken with sauce and simmer 10 minutes.",
+            "Serve hot with rice."
+        ]
     },
     {
         "id": 3,
         "title": "Avocado Toast",
-        "summary": "Crispy toast topped with smashed avocado and olive oil.",
-        "image": "https://picsum.photos/300/200?random=3"
+        "summary": "Crispy toast topped with smashed avocado, olive oil, and seasonings.",
+        "image": "https://picsum.photos/300/200?random=3",
+        "ingredients": [
+            "2 slices whole grain bread",
+            "1 ripe avocado",
+            "Salt and pepper",
+            "Olive oil",
+            "Red pepper flakes (optional)"
+        ],
+        "instructions": [
+            "Toast the bread slices until golden.",
+            "Mash avocado with salt and pepper.",
+            "Spread avocado on toast.",
+            "Drizzle with olive oil and sprinkle red pepper flakes.",
+            "Serve immediately."
+        ]
+    },
+    {
+        "id": 4,
+        "title": "Chocolate Chip Cookies",
+        "summary": "Classic chewy chocolate chip cookies with a golden crust.",
+        "image": "https://picsum.photos/300/200?random=4",
+        "ingredients": [
+            "2 cups all-purpose flour",
+            "1 cup sugar",
+            "1 cup butter",
+            "2 eggs",
+            "1 tsp vanilla extract",
+            "1 cup chocolate chips"
+        ],
+        "instructions": [
+            "Preheat oven to 180°C (350°F).",
+            "Mix butter and sugar until creamy.",
+            "Add eggs and vanilla, mix well.",
+            "Fold in flour and chocolate chips.",
+            "Spoon onto baking sheet and bake 12-15 minutes."
+        ]
     }
 ]
