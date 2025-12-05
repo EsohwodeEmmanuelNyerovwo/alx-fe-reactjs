@@ -7,13 +7,30 @@ const AddRecipeForm = () => {
     const [steps, setSteps] = useState('');
     const [errors, setErrors] = useState({});
 
+    const validate = () => {
+        if (!title.trim()) return "Title is required.";
+        if (!ingredients.trim()) return "Ingredients are required.";
+        if (!steps.trim()) return "Preparation steps are required.";
+
+        const ingredientList = ingredients.split('\n').filter(i => i.trim() !== "");
+        if (ingredientList.length < 2) return "Please enter at least 2 ingredients.";
+
+        return ""; // no errors
+    };
+
     const handleSubmit = e => {
         e.preventDefault();
 
-        if (!title || !ingredients || !steps) {
-            setErrors("All fields are required.");
+        const errMsg = validate(); // call validate()
+
+        if (errMsg) {
+            setErrors(errMsg);
             return;
         }
+        // if (!title || !ingredients || !steps) {
+        //     setErrors("All fields are required.");
+        //     return;
+        // }
 
         const newRecipe = {
             id: Date.now(),
