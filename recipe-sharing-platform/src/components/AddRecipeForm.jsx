@@ -49,13 +49,13 @@ const AddRecipeForm = () => {
     };
 
     return (
-        <div className='max-w-2xl mx-auto bg-white shadow rounded-lg p-6 mt-6'>
-            <h2 className='text-2xl font-bold mb-4'>Add New Recipe</h2>
+        <div className='max-w-xl md:max-w-2xl mx-auto p-6 bg-white rounded-lg shadow mt-6'>
+            <h2 className='text-2xl md:text-3xl font-bold mb-4'>Add New Recipe</h2>
             {error && (
                 <p className="text-red-500 mb-3">{error}</p>
             )}
-            <form onSubmit={handleSubmit} className='space-y-4'>
-                <div>
+            <form onSubmit={handleSubmit} className='space-y-4 grid grid-cols-1 md:grid-cols-2 gap-4'>
+                <div className="col-span-1 md:col-span-2">
                     <label className="block font-medium mb-1">Recipe Title</label>
                     <input
                         type="text"
@@ -65,7 +65,7 @@ const AddRecipeForm = () => {
                         placeholder="Enter recipe title"
                     />
                 </div>
-                <div>
+                <div className="col-span-1 md:col-span-2">
                     <label className="block font-medium mb-1">Ingredients (one per line)</label>
                     <textarea
                         className="w-full border p-2 rounded h-32"
@@ -74,7 +74,7 @@ const AddRecipeForm = () => {
                         placeholder="Enter ingredients..."
                     ></textarea>
                 </div>
-                <div>
+                <div className="col-span-1 md:col-span-2">
                     <label className="block font-medium mb-1">Preparation Steps (one per line)</label>
                     <textarea
                         className="w-full border p-2 rounded h-32"
@@ -83,7 +83,7 @@ const AddRecipeForm = () => {
                         placeholder="Enter steps..."
                     ></textarea>
                 </div>
-                <button type='submit' className='bg-blue-600 text-white px-4 rounded hover:bg-blue-700 transition cursor-pointer'>Add Recipe</button>
+                <button type='submit' className='bg-blue-600 text-white px-4 rounded hover:bg-blue-700 transition cursor-pointer col-span-1 md:col-span-2'>Add Recipe</button>
             </form>
         </div>
     )
