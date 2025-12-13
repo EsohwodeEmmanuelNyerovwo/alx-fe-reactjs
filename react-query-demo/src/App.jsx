@@ -1,6 +1,6 @@
 import './App.css'
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import PostsComponent from './components/postsComponent';
+import PostsComponent from './components/postsComponent.jsx';
 
 
 
