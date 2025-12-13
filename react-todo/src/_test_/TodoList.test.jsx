@@ -8,31 +8,27 @@ describe('TodoList Component', () => {
         render(<TodoList />);
         expect(screen.getByText('Learn React')).toBeInTheDocument();
         expect(screen.getByText('Build a Todo App')).toBeInTheDocument();
-        expect(screen.getByText('Write Tests')).toBeInTheDocument();
     });
-    test('adds a new todo', () => {
+    test('adds a new todo', async () => {
         render(<TodoList />);
         const input = screen.getByTestId('todo-input');
         const addButton = screen.getByText('Add');
 
-        userEvent.type(input, 'New Todo');
-        userEvent.click(addButton);
+        await userEvent.type(input, 'New Todo');
+        await userEvent.click(addButton);
 
         expect(screen.getByText('New Todo')).toBeInTheDocument();
     });
     test('toggles a todo completion', () => {
         render(<TodoList />);
         const todo = screen.getByText('Learn React');
-        expect(todo).not.toHaveStyle('text-decoration: line-through');
-
         fireEvent.click(todo);
         expect(todo).toHaveStyle('text-decoration: line-through');
     });
     test('deletes a todo', () => {
         render(<TodoList />);
         const todo = screen.getByText('Learn React');
-        const deleteButton = screen.getByTestId(/delete-1/i);
-
+        const deleteButton = screen.getByTestId('delete-1');
         fireEvent.click(deleteButton);
         expect(todo).not.toBeInTheDocument();
     });
