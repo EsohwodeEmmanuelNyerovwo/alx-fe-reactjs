@@ -1,4 +1,14 @@
-import React from 'react'
+import { useQuery } from "react-query";
+
+
+const fetchPosts = async () => {
+    const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+    if (!response.ok) {
+        throw new Error("Failed to fetch posts");
+    }
+    return response.json();
+};
+
 
 const PostsComponent = () => {
     const {
@@ -38,6 +48,7 @@ const PostsComponent = () => {
             </ul>
         </div>
     );
-}
+};
 
-export default PostsComponent
+
+export default PostsComponent;
