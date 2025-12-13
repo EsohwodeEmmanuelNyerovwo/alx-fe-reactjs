@@ -64,7 +64,23 @@ const RegistrationForm = () => {
                 name="username"
                 placeholder="Username"
                 value={username}
-                onChange={handleChange} />
+                onChange={handleChange}
+            />
+            <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                value={email}
+                onChange={handleChange}
+            />
+            <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                value={password}
+                onChange={handleChange}
+            />
+            <button type="submit">Register</button>
         </form>
     )
 };
