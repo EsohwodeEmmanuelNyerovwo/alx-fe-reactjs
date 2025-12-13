@@ -1,21 +1,24 @@
 import React, { useState } from 'react'
 
 const RegistrationForm = () => {
-    const [formData, setFormData] = useState({
-        username: '', email: '', password: ''
-    });
+    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
-    const [error, setError] = useState('');
+
+    const [error, setError] = useState("");
+
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData((prev) => ({ ...prev, [name]: value }));
+        if (name === "username") setUsername(value);
+        if (name === "email") setEmail(value);
+        if (name === "password") setPassword(value);
     };
+
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-
-        const { username, email, password } = formData;
 
 
         if (!username || !email || !password) {
@@ -28,47 +31,49 @@ const RegistrationForm = () => {
 
 
         // Mock API call
-        console.log("Submitting data:", formData);
+        console.log("Submitting data:", { username, email, password });
         alert("User registered successfully (Controlled Form)");
     };
+
+
     return (
-        <div>
-            <form>
-                <h2>Register (Controlled)</h2>
+        <form onSubmit={handleSubmit}>
+            <h2>Register (Controlled)</h2>
 
 
-                {error && <p style={{ color: "red" }}>{error}</p>}
+            {error && <p style={{ color: "red" }}>{error}</p>}
 
 
-                <input
-                    type="text"
-                    name="username"
-                    placeholder="Username"
-                    value={formData.username}
-                    onChange={handleChange}
-                />
-                <input
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                    value={formData.email}
-                    onChange={handleChange}
-                />
+            <input
+                type="text"
+                name="username"
+                placeholder="Username"
+                value={username}
+                onChange={handleChange}
+            />
 
 
-                <input
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    value={formData.password}
-                    onChange={handleChange}
-                />
+            <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                value={email}
+                onChange={handleChange}
+            />
 
 
-                <button type="submit">Register</button>
-            </form>
-        </div>
-    )
-}
+            <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                value={password}
+                onChange={handleChange}
+            />
+
+
+            <button type="submit">Register</button>
+        </form>
+    );
+};
 
 export default RegistrationForm

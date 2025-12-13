@@ -8,6 +8,8 @@ const FormikForm = () => {
         email: "",
         password: "",
     };
+
+
     const validationSchema = Yup.object({
         username: Yup.string().required("Username is required"),
         email: Yup.string()
@@ -20,10 +22,13 @@ const FormikForm = () => {
 
 
     const handleSubmit = async (values, { resetForm }) => {
+        // Mock API call
         console.log("Formik submission:", values);
         alert("User registered successfully (Formik Form)");
         resetForm();
-    }
+    };
+
+
     return (
         <Formik
             initialValues={initialValues}
@@ -56,6 +61,6 @@ const FormikForm = () => {
             </Form>
         </Formik>
     );
-}
+};
 
 export default FormikForm
