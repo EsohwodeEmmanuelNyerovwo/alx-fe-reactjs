@@ -6,7 +6,7 @@ const RegistrationForm = () => {
     const [password, setPassword] = useState("");
 
 
-    const [error, setError] = useState("");
+    const [errors, setErrors] = useState({});
 
 
     const handleChange = (e) => {
@@ -21,13 +21,22 @@ const RegistrationForm = () => {
         e.preventDefault();
 
 
-        if (!username || !email || !password) {
-            setError("All fields are required");
+        const newErrors = {};
+
+
+        if (!username) newErrors.username = "Username is required";
+        if (!email) newErrors.email = "Email is required";
+        if (!password) newErrors.password = "Password is required";
+
+
+        if (Object.keys(newErrors).length > 0) {
+            setErrors(newErrors);
             return;
         }
+        // }
 
 
-        setError("");
+        setErrors({});
 
 
         // Mock API call
@@ -38,10 +47,16 @@ const RegistrationForm = () => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <h2>Register (Controlled)</h2>
+            <h2>Registration Details:</h2>
 
 
-            {error && <p style={{ color: "red" }}>{error}</p>}
+            {errors.username && <p style={{ color: "red" }}>{errors.username}</p>}
+
+
+            {errors.email && <p style={{ color: "red" }}>{errors.email}</p>}
+
+
+            {errors.password && <p style={{ color: "red" }}>{errors.password}</p>}
 
 
             <input
@@ -49,31 +64,9 @@ const RegistrationForm = () => {
                 name="username"
                 placeholder="Username"
                 value={username}
-                onChange={handleChange}
-            />
-
-
-            <input
-                type="email"
-                name="email"
-                placeholder="Email"
-                value={email}
-                onChange={handleChange}
-            />
-
-
-            <input
-                type="password"
-                name="password"
-                placeholder="Password"
-                value={password}
-                onChange={handleChange}
-            />
-
-
-            <button type="submit">Register</button>
+                onChange={handleChange} />
         </form>
-    );
+    )
 };
 
 export default RegistrationForm
