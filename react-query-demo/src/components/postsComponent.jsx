@@ -1,3 +1,4 @@
+import React from 'react'
 import { useQuery } from "react-query";
 
 
@@ -8,8 +9,6 @@ const fetchPosts = async () => {
     }
     return response.json();
 };
-
-
 const PostsComponent = () => {
     const {
         data: posts,
@@ -26,8 +25,6 @@ const PostsComponent = () => {
 
     if (isLoading) return <p>Loading posts...</p>;
     if (isError) return <p>Error: {error.message}</p>;
-
-
     return (
         <div>
             <h2>Posts</h2>
@@ -47,8 +44,7 @@ const PostsComponent = () => {
                 ))}
             </ul>
         </div>
-    );
-};
-
+    )
+}
 
 export default PostsComponent;
